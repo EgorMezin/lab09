@@ -1,4 +1,4 @@
-name: release
+name: Build And Package
 on:
   push:
     tags:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: build
+      - name: Configure and Build
         run: |
           cmake -H. -B_build -DCPACK_GENERATOR="TGZ;DEB;RPM"
           cmake --build _build --target package
